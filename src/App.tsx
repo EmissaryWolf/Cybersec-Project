@@ -34,7 +34,7 @@ export default function App() {
         .replace(/^(https?:\/\/)?(www\.)?/i, '')
         .split('/')[0];
 
-      const res = await fetch(`https://cybersec-project-orvt.onrender.com/${cleanTarget}`);
+      const res = await fetch(`https://cybersec-project-orvt.onrender.com/analisar/${cleanTarget}`);
       if (!res.ok) throw new Error();
 
       const data = await res.json();

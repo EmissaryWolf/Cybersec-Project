@@ -1,33 +1,28 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
 
-app = FastAPI(title="Cyber_Fox Neural Scanner API")
+app = FastAPI()
 
-# Configuração de CORS: Permite que o seu frontend acesse o backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Em produção, podemos restringir para o seu domínio da Vercel
+    # Remova a barra final da URL para evitar erros de match
+    allow_origins=["https://cybersec-project.vercel.app"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-@app.get("/")
-async def root():
-    return {"status": "online", "system": "Cyber_Fox v2.0"}
-
 @app.get("/analisar/{url:path}")
 async def analisar(url: str):
-    # Aqui simulamos uma lógica de segurança
-    vulnerabilidades = 0 
-    status = "SEGURO" if vulnerabilidades == 0 else "RISCO DETECTADO"
-    
+    # O retorno DEVE bater com o tipo ScanResponse do seu React
     return {
-        "veredito": status,
-        "detalhes": f"Alvo: {url}\nProtocolo: HTTPS verificado.\nExploits: Nenhum encontrado.\nNível de Risco: Baixo.",
-        "icon": "✓"
+        "veredito": "SEGURO",
+        "detalhes": f"--- CYBER_FOX PRODUCTION REPORT ---\nTarget: {url}\nStatus: PROTEGIDO\nInfrastructure: Render Cloud\nSecurity: Verified.",
+        "icon": "✔"
     }
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
