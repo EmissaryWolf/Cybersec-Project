@@ -63,7 +63,7 @@ export default function App() {
           <div className="w-10 h-10 border border-cyan-500 rounded-full overflow-hidden shadow-[0_0_10px_#06b6d4]">
             <FoxAvatar />
           </div>
-          <span className="font-black text-white tracking-tighter">CYBER_FOX v2.0</span>
+          <span className="font-black text-white tracking-tighter">CYBER_FOX v3.0</span>
         </div>
 
         <div className="flex gap-4">

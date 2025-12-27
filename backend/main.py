@@ -20,11 +20,10 @@ async def root():
 
 @app.get("/analisar/{url:path}")
 async def analisar(url: str):
-    # Retorno exatamente como o seu Frontend espera (image_1e2fb7.png)
     return {
-        "veredito": "SEGURO",
-        "detalhes": f"--- CYBER_FOX REPORT ---\nAlvo: {url}\nStatus: PROTEGIDO\nProtocolo: HTTPS verificado.",
-        "icon": "✔"
+        "veredito": "SEGURO", # Deve ser 'veredito'
+        "detalhes": f"Alvo: {url}\nStatus: PROTEGIDO\nProtocolo: HTTPS verificado.",
+        "icon": "✔" # Deve ser 'icon'
     }
 
 if __name__ == "__main__":
