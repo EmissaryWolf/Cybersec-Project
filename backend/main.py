@@ -4,10 +4,12 @@ import os
 
 app = FastAPI()
 
-# Ajuste do CORS - Remova a barra final da URL da Vercel
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://cybersec-project.vercel.app"], 
+    allow_origins=[
+        "https://cybersec-project.vercel.app",
+        "https://cyber-fox-project.vercel.app" # Adicione esta linha também
+    ], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
